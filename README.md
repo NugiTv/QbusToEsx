@@ -1,6 +1,7 @@
-# QbusToEsx Qbus Scriptleri ESX e Çevirme, Durmaksızın Güncell.
+
+# QbusToEsx Converting Qbus Scripts to ESX, Non-stop Update.
 --------------------------------------------------------------------------------------------------
-Qbus Temeli Ve ESX temeli.
+Qbus Foundation And ESX foundation.
  ```lua
 QBCore = nil 
 
@@ -11,14 +12,14 @@ Citizen.CreateThread(function()
 	end
 end)
 ```
-Altaki yeni olanlar için -- üsteki eski sürüm için, çalışmaz ise ikisinide dene...
+Below is for the new ones -- above is for the old version, if it doesn't work try both...
 ```lua
 local QBCore = exports['qb-core']:GetCoreObject()
 ```
 
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
+# BELOW ESX
 ```lua
 ESX = nil
 
@@ -32,17 +33,17 @@ end)
 
 --------------------------------------------------------------------------------------------------
 
-Beyler Bu kısım Yoktu eklendi.
-Anlamı:
-Oyuncu Giriş Kısmı İlik Oyuna Girerken Lazım, Yani Server Dosyasıdır.
-Bu olay, oyuncu sunucuya bağlandığında tetiklenir
+Gentlemen, this section was added.
+Meaning:
+The Player's Input Part is required when entering the game, that is, it is the server file.
+This event is triggered when the player connects to the server
 ```lua
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded')
 AddEventHandler('QBCore:Client:OnPlayerLoaded',
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
+# BELOW ESX
 ```lua
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded',
@@ -50,14 +51,14 @@ AddEventHandler('esx:playerLoaded',
 
 --------------------------------------------------------------------------------------------------
 
-Server Dosyası, Job Kısmı Meslek Kısmıdır.
+Server File, Job Part is Occupation Part.
 ```lua
 RegisterNetEvent('QBCore:Client:OnJobUptade')
 AddEventHandler('QBCore:Client:OnJobUptade', 
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
+# BELOW ESX
 ```lua
 RegisterNetEvent('esx:setJob')
 AddEventHandler('esx:setJob',
@@ -65,15 +66,15 @@ AddEventHandler('esx:setJob',
 
 --------------------------------------------------------------------------------------------------
 
-Burdan Kontrol Edebilrsiniz.
+You Can Check Here.
 https://esx-framework.github.io/es_extended/common/events/onplayerdeath/#example-client-side-usage
 ```lua
 RegisterNetEvent('QBCore:Client:OnPlayerUnload')
 AddEventHandler('QBCore:Client:OnPlayerUnload',
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
+# BELOW ESX
 ```lua
 RegisterNetEvent('esx:onPlayerDeath')
 AddEventHandler('esx:onPlayerDeath',
@@ -81,98 +82,98 @@ AddEventHandler('esx:onPlayerDeath',
 
 --------------------------------------------------------------------------------------------------
 
-Beyler Bu kısım Yoktu eklendi.
-Anlamı:
-Bu işlev, en yakın oyuncu istemci kimliğini ve oynatıcıya olan mesafeyi alır.
+Gentlemen, this section was added.
+Meaning:
+This function gets the nearest player client id and distance to the player.
 ```lua
 QBCore.Functions.GetClosestPlayer()
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
+# BELOW ESX
 ```lua
 ESX.Game.GetClosestPlayer()
 ```
 
 --------------------------------------------------------------------------------------------------
 
-3D li Yazı Ekleme, Cilent Dosyası. Örnek : https://media.discordapp.net/attachments/623207764314816562/812096508786507806/resim_1.png
+Adding 3D Text, Cilent File. Sample :
+https://media.discordapp.net/attachments/623207764314816562/812096508786507806/resim_1.png
 ```lua
-QBCore.Functions.DrawText3D(1, 1, 1, 'Örnek')
+QBCore.Functions.DrawText3D(1, 1, 1, 'Sample')
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
+# BELOW ESX
 ```lua
-DrawText3D(1, 1, 1, 'Örnek') -- (aşağısına function açmanız gerekmektedir.)
-ESX.Game.Utils.DrawText3D(1, 1, 1, 'Örnek') -- ESX bunda gerek yok zaten var, fonksiyona.
+DrawText3D(1, 1, 1, 'Example') -- (You need to open function below.)
+ESX.Game.Utils.DrawText3D(1, 1, 1, 'Example') -- ESX doesn't need it, it already has the function.
 ```
 
---------------------------------------------------------------------------------------------------
+------------------------------------------------ ------------------------------------------------
 
-Menu Aç Kapat ESX & QBCore De Ki Menüler Örnekler : https://prnt.sc/u4f7s5
-```lua
+Menu Open Close Menus in ESX & QBCore Examples: https://prnt.sc/u4f7s5
+``
 QBCore.UI.Menu.Open
-QBCore.UI.Menu.CloseAll() -- (menu default scripti kurmanız gerekmektedir.)
+QBCore.UI.Menu.CloseAll() -- (you need to install menu default script.)
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
-```lua
+# ESX BELOW
+``
 ESX.UI.Menu.Open
 ESX.UI.Menu.CloseAll()
 ```
 
+------------------------------------------------ ------------------------------------------------
+Notification Script Example: https://dosya.turkmmo.com/2020/09/36521_efa54848705a4069cbedfc2770e50cf1.png
+``
+QBCore.Functions.Notify("Tool locked.", "error")
+```
+# ABOVE QBUSCORE
+
+# ESX BELOW
+``
+TriggerEvent('Notification',"Example.")
+```
+
 --------------------------------------------------------------------------------------------------
 
-Bildirim Scripti Örnek : https://dosya.turkmmo.com/2020/09/36521_efa54848705a4069cbedfc2770e50cf1.png
-```lua
-QBCore.Functions.Notify("Araç kitlendi.", "error")
+Inventory Item Section.
+``
+xPlayer.Functions.GetItemByName
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
-```lua
-TriggerEvent('Notification',"Örnek.")
-```
-
---------------------------------------------------------------------------------------------------
-
-Enventer İtem Kısmı.
-```lua
-xPlayer.Functions.GetItemByName 
-```
-# ÜSTEKİ QBUSCORE
-
-# ALTAKİ ESX
-```lua
+# ESX BELOW
+``
 xPlayer.getInventoryItem
 ```
 --------------------------------------------------------------------------------------------------
 
-Enventer İtem Kısmı.
-```lua
-xPlayer.Functions.GetItemByName 
+Inventory Item Section.
+``
+xPlayer.Functions.GetItemByName
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
-```lua
+# ESX BELOW
+``
 xPlayer.getInventoryItem
 ```
 
 --------------------------------------------------------------------------------------------------
 
-Job Başlangıç kod.
+Job Initial code.
 ```lua
 RegisterNetEvent('QBCore:Client:OnJobUpdate')
 AddEventHandler('QBCore:Client:OnJobUpdate', function(job)
     PlayerData.job = job
 end)
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
+# BELOW ESX
 ```lua
 RegisterNetEvent('esx:setJob')
 AddEventHandler('esx:setJob', function(job)
@@ -182,68 +183,68 @@ end)
 
 --------------------------------------------------------------------------------------------------
 
-Para Ver Para Al Kısmı
-```lua
-Player.Functions.AddMoney('bank', amount, "Bank depost") -- banka
-Player.Functions.RemoveMoney('cash', amount, "Bank depost") -- üstündeki para
+Give Money Get Money Section
+``
+Player.Functions.AddMoney('bank', amount, "Bank deposit") -- bank
+Player.Functions.RemoveMoney('cash', amount, "Bank deposit") -- money on it
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
-```lua
-xPlayer.removeAccountMoney('bank', amount) --para kaldırma
-xPlayer.addMoney(amount) -- para ekleme
+# ESX BELOW
+``
+xPlayer.removeAccountMoney('bank', amount) --remove money
+xPlayer.addMoney(amount) -- add money
 ```
 
 --------------------------------------------------------------------------------------------------
 
-Para Kısmı Data.
-```lua
+Money Part Data.
+``
 Player.PlayerData.money["bank"]
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
-```lua
+# ESX BELOW
+``
 xPlayer.getAccount('bank').money
 ```
 
 --------------------------------------------------------------------------------------------------
 
-Envanter İtem Silme Kısmı.
-```lua
-xPlayer.Functions.RemoveItem 
+Inventory Item Deletion Section.
+``
+xPlayer.Functions.RemoveItem
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
-```lua
-xPlayer.removeInventoryItem 
+# ESX BELOW
+``
+xPlayer.removeInventoryItem
 ```
 
 --------------------------------------------------------------------------------------------------
 
-Envanter İtem Ekleme Kısmı.
-```lua
+Adding Inventory Items.
+``
 xPlayer.Functions.AddItem
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
-```lua
+# ESX BELOW
+``
 xPlayer.addInventoryItem
 ```
 
 --------------------------------------------------------------------------------------------------
 
-Karakter Kımsı Oyuncunun İd Si Gibi Birşey.
-```lua
+The Character Is Something Like The Id Of The Player.
+``
 QBCore.Functions.GetPlayer(src)
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
-```lua
+# ESX BELOW
+``
 ESX.GetPlayerFromId(src)
 ```
 
@@ -261,137 +262,136 @@ ESX.GetPlayerFromIdentifier(src)
 
 --------------------------------------------------------------------------------------------------
 
-Bu işlev, tüm sondaki beyaz boşlukları kaldırarak bir metni kırpar. Genellikle `GetVehicleNumberPlateText()` yerlileri dezenfekte ederken kullanılır.
-#örnek
-```lua
+This function crops a text, removing all trailing white spaces. Usually `GetVehicleNumberPlateText()` is used when sanitizing locals.
+#sample
+``
 QBCore.Functions.MathTrim(GetVehicleNumberPlateText(vehicle))
 ````
-#standart
-```lua
-QBCore.Functions.MathTrim 
+#standard
+``
+QBCore.Functions.MathTrim
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
-```lua
+# ESX BELOW
+``
 ESX.Math.Trim(value)
 ```
 
 --------------------------------------------------------------------------------------------------
 
-Nill buşta bilinmiyor güncelencek
-# ÖRNEK
-```lua
+Nill is unknown in this will be updated
+# SAMPLE
+``
 QBCore.Functions.MathRound(GetVehicleBodyHealth(vehicle), 1),
 ```
-#standart
-```lua
+#standard
+``
 QBCore.Functions.MathRound()
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
-# ÖRNEK
-```lua
-local deger - 5.444
+# ESX BELOW
+# SAMPLE
+``
+local value - 5.444
 
-print ('deger:' .. değer) - 5.444 -- döndürür
-print ('deger yuvarlandı:' .. ESX.Math.Round(deger)) -- 5 döndürür
-print ('deger yuvarlandı:' .. ESX.Math.Round(deger, 1)) -- 5,4 döndürür
+print('value:' ..value) - returns 5,444 --
+print ('value rounded:' .. ESX.Math.Round(value)) -- returns 5
+print ('value rounded:' .. ESX.Math.Round(value, 1)) -- returns 5.4
 ```
-#standart
-```lua
-ESX.Math.Round(değer, numaraOndalıkBasamaklar)
+#standard
+``
+ESX.Math.Round(value, numberDecimals)
 ```
 
 --------------------------------------------------------------------------------------------------
 
-Araba Spawn Kısmı Konumu Vsb Şeyler.
-```lua
+Car Spawn Part Location Vsb Stuff.
+``
 QBCore.Functions.SpawnVehicle()
 QBCore.Functions.DeleteVehicle()
 QBCore.Functions.GetVehicleProperties()
 QBCore.Functions.GetClosestVehicle()
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
-```lua
+# ESX BELOW
+``
 ESX.Game.SpawnVehicle()
 ESX.Game.DeleteVehicle()
 ESX.Game.GetVehicleProperties()
 ESX.Game.GetClosestVehicle()
 ```
---(Eğer ESX.Game olan neredeyse her şey QBCore.Functions olarak aynı şekildedir.)
+--(Almost everything that is ESX.Game is the same as QBCore.Functions.)
 
 --------------------------------------------------------------------------------------------------
 
-Oyuncu Kendi Karakterin.
-```lua
+The Player is Your Own Character.
+``
 QBCore.Functions.GetPlayerData()
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
-```lua
+# ESX BELOW
+``
 ESX.GetPlayerData()
 ```
-
 --------------------------------------------------------------------------------------------------
 
-İtem Oluşturma.
-```lua
+Item Creation.
+``
 QBCore.Functions.CreateUseableItem()
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
-```lua
+# ESX BELOW
+``
 ESX.RegisterUsableItem()
 ```
 
 --------------------------------------------------------------------------------------------------
 
-Banka Para Kaldırma.
-```lua
+Bank Money Removal.
+``
 Player.Functions.RemoveMoney()
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
-```lua
+# ESX BELOW
+``
 xPlayer.removeMoney(money)
 ```
 
 --------------------------------------------------------------------------------------------------
 
-Dosya'lar İle Alakalı.
-```lua
+About Files.
+``
 QBCore.Functions.CreateCallback()
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
-```lua
+# ESX BELOW
+``
 ESX.RegisterServerCallback()
 ```
 
 --------------------------------------------------------------------------------------------------
 
-Dosya'lar İle Alakalı.
-```lua
+About Files.
+``
 QBCore.Functions.TriggerCallback()
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
-```lua
+# ESX BELOW
+``
 ESX.TriggerServerCallback()
 ```
 
 --------------------------------------------------------------------------------------------------
 
-qb'de cid esx'de identifier kullanılıyor olayı çözmeniz için ufak bir kod bloğu bıraktım.
+identifier is used in cid esx in qb I left a small code block for you to solve the event.
 ```lua
 QBCore.Functions.CreateCallback('system:fetchStatus', function(source, cb)
     local Player = QBCore.Functions.GetPlayer(source)
@@ -411,9 +411,10 @@ QBCore.Functions.CreateCallback('system:fetchStatus', function(source, cb)
      end
 end)
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
+# ESX BELOW
+
 ```lua
 ESX.RegisterServerCallback("system:fetchStatus", function(source, cb)
     local src = source
@@ -449,21 +450,21 @@ end)
 ```lua
 QBCore.Shared.Items
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
+# ESX BELOW
 ```lua
 ESX.GetItems()
 ```
 --------------------------------------------------------------------------------------------------
 
-Sql bağlama kısmı
+SQL binding part
 ```lua
 QBCore.Functions.ExecuteSql()
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
+# ESX BELOW
 ```lua
 ESX.ExecuteSql() --(ghmattimysql)
 MySQL.Async.execute()
@@ -472,31 +473,31 @@ MySQL.Async.execute()
 --------------------------------------------------------------------------------------------------
 
 
-RegisterCommand - yani chat komut kısmı.
-```lua
+RegisterCommand - the chat command part.
+``
 QBCore.Commands.Add()
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
-```lua
-RegisterCommand 
+# ESX BELOW
+``
+RegisterCommand
 ```
--- (RegisterCommand qbcore'da da çalışır.)
+-- (RegisterCommand also works in qbcore.)
 
 --------------------------------------------------------------------------------------------------
 
-Karakter Kısmı Dır Data Sına Bağlama.
-```lua
+Character Part Dir Data Test Binding.
+``
 local Player = QBCore.Functions.GetPlayer(source)
-['@citizenid'] = Player.PlayerData.citizenid -- çekme Player
+['@citizenid'] = Player.PlayerData.citizenid -- pull Player
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
-```lua
+# ESX BELOW
+``
 local user = ESX.GetPlayerFromId(src)
-["@identifier"] = user.identifier -- çekme user
+["@identifier"] = user.identifier -- pull user
 ```
 
 --------------------------------------------------------------------------------------------------
@@ -518,9 +519,9 @@ ESX.Math.GroupDigits()
 ```lua
 QBCore.Functions.GetClosestObject()
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
+# ESX BELOW
 ```lua
 ESX.Game.GetClosestObject()
 ```
@@ -530,9 +531,9 @@ ESX.Game.GetClosestObject()
 ```lua
 QBCore.Functions.GetVehicleInDirection()
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
+# ESX BELOW
 ```lua
 ESX.Game.GetVehicleInDirection()
 ```
@@ -542,9 +543,9 @@ ESX.Game.GetVehicleInDirection()
 ```lua
 QBCore.Functions.GetPeds()
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
+# ESX BELOW
 ```lua
 ESX.Game.GetPeds()
 ```
@@ -554,9 +555,9 @@ ESX.Game.GetPeds()
 ```lua
 QBCore.Functions.GetObjects()
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
+# ESX BELOW
 ```lua
 ESX.Game.GetObjects()
 ```
@@ -566,9 +567,9 @@ ESX.Game.GetObjects()
 ```lua
 QBCore.Functions.GetClosestPed()
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
+# ESX BELOW
 ```lua
 ESX.Game.GetClosestPed()
 ```
@@ -578,9 +579,9 @@ ESX.Game.GetClosestPed()
 ```lua
 QBCore.Functions.SpawnObject()
 ```
-# ÜSTEKİ QBUSCORE
+# ABOVE QBUSCORE
 
-# ALTAKİ ESX
+# ESX BELOW
 ```lua
 ESX.Game.SpawnObject()
 ```
